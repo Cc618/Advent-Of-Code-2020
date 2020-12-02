@@ -8,9 +8,9 @@ Mutiple languages have been used :
 - Julia
 
 ## Problems
-
 Some problems have multiple implementations, the best time complexity is displayed in this array :
 
 | Day | Best Time Complexity |
 | --- | -------------------- |
-| [01](src/1.jl) | O(N ^ 2|
+| [01](src/1.jl) | O(N ^ 2) |
+| [02](src/2.jl) | O(N) |
