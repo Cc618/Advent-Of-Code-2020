@@ -14,3 +14,26 @@ Some problems have multiple implementations, the best time complexity is display
 | --- | -------------------- |
 | [01](src/1.jl) | O(N ^ 2) |
 | [02](src/2.jl) | O(N) |
+
+## How to run ?
+The input is always passed via stdin by piping.
+
+### Compiled languages
+For instance, compiled languages like C++ first compile the code :
+
+```sh
+g++ -o program 1.cpp
+```
+
+And then execute it :
+
+```sh
+cat 1.input | ./program
+```
+
+### Interpreted languages
+Interpreted / JIT compiled languages such as Julia needs only one command :
+
+```sh
+cat 1.input | julia 1.jl
+```
