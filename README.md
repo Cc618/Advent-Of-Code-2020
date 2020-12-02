@@ -32,7 +32,7 @@ cat 1.input | ./program
 ```
 
 ### Interpreted languages
-Interpreted / JIT compiled languages such as Julia needs only one command :
+Interpreted / JIT compiled languages such as Julia need only one command :
 
 ```sh
 cat 1.input | julia 1.jl
