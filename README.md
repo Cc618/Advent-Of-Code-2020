@@ -6,14 +6,16 @@ Mutiple languages have been used :
 
 - C++
 - Julia
+- Dart
 
 ## Problems
 Some problems have multiple implementations, the best time complexity is displayed in this array :
 
-| Day | Best Time Complexity |
-| --- | -------------------- |
-| [01](src/1.jl) | O(N ^ 2) |
-| [02](src/2.jl) | O(N) |
+| Day | Best Time Complexity | Language |
+| --- | -------------------- | -------- |
+| [01](src/1.jl)    | O(N ^ 2)  | Julia / C++ |
+| [02](src/2.jl)    | O(N)      | Julia |
+| [03](src/3.dart)  | O(N)      | Dart |
 
 ## How to run ?
 The input is always passed via stdin by piping.
