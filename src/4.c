@@ -2,35 +2,36 @@
 #include <string.h>
 #include <stddef.h>
 
+// #define PART1
+
 // Max entry size
 char buf[4096];
 
+// Token valid
+int isvalid(char *name, char *val) {
+    return  strcmp(name, "byr") == 0 ||
+            strcmp(name, "iyr") == 0 ||
+            strcmp(name, "eyr") == 0 ||
+            strcmp(name, "hgt") == 0 ||
+            strcmp(name, "hcl") == 0 ||
+            strcmp(name, "ecl") == 0 ||
+            strcmp(name, "pid") == 0;
+}
+
 int check(char *buf, size_t len) {
-    // printf("%zu\n", len);
-
     buf[len] = 0;
-    size_t start = 0;
+
+    const char *sep = " \n";
+    char *tok = strtok(buf, sep);
+
     size_t nfields = 0;
-    for (size_t i = 0; i < len; ++i) {
-        if (buf[i] == ':') {
-            if (memcmp(buf + start, "byr", 3) == 0 || // 1 ||
-                memcmp(buf + start, "iyr", 3) == 0 ||
-                memcmp(buf + start, "eyr", 3) == 0 ||
-                memcmp(buf + start, "hgt", 3) == 0 ||
-                memcmp(buf + start, "hcl", 3) == 0 ||
-                memcmp(buf + start, "ecl", 3) == 0 ||
-                // memcmp(buf + start, "cid", 3) == 0 ||
-                memcmp(buf + start, "pid", 3) == 0)
-                    ++nfields;
+    while (tok) {
+        char *colon = strchr(tok, ':');
+        *colon = 0;
+        nfields += isvalid(tok, colon + 1);
 
-            for (; i < len && (buf[i] != ' ' && buf[i] != '\n'); ++i);
-
-            start = i + 1;
-        }
+        tok = strtok(NULL, sep);
     }
-
-    // puts("---");
-    // printf("%zu ", nfields);
 
     return nfields == 7;
 }
