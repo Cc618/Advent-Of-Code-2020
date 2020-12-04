@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stddef.h>
+#include <stdlib.h>
+#include <ctype.h>
 
 // Uncomment for part 1
 // #define PART1
@@ -9,25 +11,86 @@
 char buf[4096];
 
 static int byrValid(char *val) {
+    if (strlen(val) != 4)
+        return 0;
 
+    long v = atol(val);
+
+    return v >= 1920 && v <= 2002;
 }
 
 static int iyrValid(char *val) {
+    if (strlen(val) != 4)
+        return 0;
+
+    long v = atol(val);
+
+    return v >= 2010 && v <= 2020;
 }
 
 static int eyrValid(char *val) {
+    if (strlen(val) != 4)
+        return 0;
+
+    long v = atol(val);
+
+    return v >= 2020 && v <= 2030;
 }
 
 static int hgtValid(char *val) {
+    if (strlen(val) == 5) {
+        // cm
+        if (strcmp(val + 3, "cm")) return 0;
+
+        val[3] = 0;
+        long v = atol(val);
+
+        return 150 <= v && v <= 193;
+    } else if (strlen(val) == 4) {
+        // in
+        if (strcmp(val + 2, "in")) return 0;
+
+        val[2] = 0;
+        long v = atol(val);
+
+        return 59 <= v && v <= 76;
+    }
+
+    return 0;
 }
 
 static int hclValid(char *val) {
+    if (strlen(val) != 7) return 0;
+    if (*val != '#') return 0;
+
+    char s[7];
+    sscanf(val, "%[0-9a-f]", s);
+
+    return strlen(s) == 6;
 }
 
 static int eclValid(char *val) {
+    static const char *vals[] = {
+        "amb",
+        "blu",
+        "brn",
+        "gry",
+        "grn",
+        "hzl",
+        "oth",
+    };
+
+    for (int i = 0; i < 7; ++i)
+        if (!strcmp(val, vals[i])) return 1;
+
+    return 0;
 }
 
 static int pidValid(char *val) {
+    if (strlen(val) != 9) return 0;
+
+    while (*val--)
+        if (!isdigit(*val)) return 0;
 }
 
 // Token valid
@@ -54,10 +117,9 @@ int isvalid(char *name, char *val) {
         { "pid", pidValid },
     };
 
-    for (int i = 0; i < 7; ++i) {
+    for (int i = 0; i < 7; ++i)
         if (strcmp(entries[i].name, name) == 0)
-            return 1;
-    }
+            return entries[i].validator(val);
 
     return 0;
 #endif
@@ -82,6 +144,8 @@ int check(char *buf, size_t len) {
 }
 
 int main() {
+
+
     int c;
     size_t bufi = 0;
     size_t valid = 0;
