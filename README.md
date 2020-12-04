@@ -4,9 +4,10 @@ Welcome to the [Advent Of Code 2020](https://adventofcode.com/) !
 ## Languages
 Mutiple languages have been used :
 
+- C
 - C++
-- Julia
 - Dart
+- Julia
 
 ## Problems
 Some problems have multiple implementations, the best time complexity is displayed in this array :
@@ -16,6 +17,7 @@ Some problems have multiple implementations, the best time complexity is display
 | [01](src/1.jl)    | O(N ^ 2)  | Julia / C++ |
 | [02](src/2.jl)    | O(N)      | Julia |
 | [03](src/3.dart)  | O(N)      | Dart |
+| [04](src/4.c)     | O(N)      | C |
 
 ## How to run ?
 The input is always passed via stdin by piping.
