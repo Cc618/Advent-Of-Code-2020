@@ -64,7 +64,7 @@ static int hclValid(char *val) {
     if (*val != '#') return 0;
 
     char s[7];
-    sscanf(val, "%[0-9a-f]", s);
+    sscanf(val + 1, "%[0-9a-f]", s);
 
     return strlen(s) == 6;
 }
@@ -89,8 +89,10 @@ static int eclValid(char *val) {
 static int pidValid(char *val) {
     if (strlen(val) != 9) return 0;
 
-    while (*val--)
-        if (!isdigit(*val)) return 0;
+    while (*val)
+        if (!isdigit(*val++)) return 0;
+
+    return 1;
 }
 
 // Token valid
@@ -144,7 +146,31 @@ int check(char *buf, size_t len) {
 }
 
 int main() {
+    // // Examples (contains memory leaks)
+    // printf("%d\n", isvalid("byr", strdup("2002")));
+    // printf("%d\n", isvalid("byr", strdup("2003")));
+    // puts("");
 
+    // printf("%d\n", isvalid("hgt", strdup("60in")));
+    // printf("%d\n", isvalid("hgt", strdup("190cm")));
+    // printf("%d\n", isvalid("hgt", strdup("190in")));
+    // printf("%d\n", isvalid("hgt", strdup("190")));
+    // puts("");
+
+    // printf("%d\n", isvalid("hcl", strdup("#123abc")));
+    // printf("%d\n", isvalid("hcl", strdup("#123abz")));
+    // printf("%d\n", isvalid("hcl", strdup("123abc")));
+    // puts("");
+
+    // printf("%d\n", isvalid("ecl", strdup("brn")));
+    // printf("%d\n", isvalid("ecl", strdup("wat")));
+    // puts("");
+
+    // printf("%d\n", isvalid("pid", strdup("000000001")));
+    // printf("%d\n", isvalid("pid", strdup("0123456789")));
+    // puts("");
+
+    // return 0;
 
     int c;
     size_t bufi = 0;
