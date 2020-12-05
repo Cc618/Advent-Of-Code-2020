@@ -1,18 +1,20 @@
 #include <stdio.h>
 #include <stddef.h>
 
-int getPos(const char *val, int len, int high, char upper) {
-    int low = 0;
-    for (int i = 0; i < len; ++i) {
-        int mid = (high + low) / 2;
-        if (val[i] == upper)
-            low = mid + 1;
-        else
-            high = mid;
-    }
+extern int getPos(const char *val, int len, int high, char upper);
 
-    return low;
-}
+// int getPos(const char *val, int len, int high, char upper) {
+//     int low = 0;
+//     for (int i = 0; i < len; ++i) {
+//         int mid = (high + low) / 2;
+//         if (val[i] == upper)
+//             low = mid + 1;
+//         else
+//             high = mid;
+//     }
+
+//     return low;
+// }
 
 int getId(const char *val) {
     int row = getPos(val, 7, 127, 'B');
@@ -22,6 +24,10 @@ int getId(const char *val) {
 }
 
 int main() {
+    // getId("BFFFBBFRRR");
+    // return 0;
+
+
     int mx = 0;
 
     char buf[16];
