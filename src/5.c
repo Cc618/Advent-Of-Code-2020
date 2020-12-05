@@ -16,18 +16,16 @@ extern int getPos(const char *val, int len, int high, char upper);
 //     return low;
 // }
 
-int getId(const char *val) {
-    int row = getPos(val, 7, 127, 'B');
-    int col = getPos(val + 7, 3, 7, 'R');
+int getId(const char *val);
 
-    return row * 8 + col;
-}
+// int getId(const char *val) {
+//     int row = getPos(val, 7, 127, 'B');
+//     int col = getPos(val + 7, 3, 7, 'R');
+
+//     return row * 8 + col;
+// }
 
 int main() {
-    // getId("BFFFBBFRRR");
-    // return 0;
-
-
     int mx = 0;
 
     char buf[16];

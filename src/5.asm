@@ -60,3 +60,39 @@ getPos:
 
     leave
     ret
+
+
+; rdi : val
+global getId
+getId:
+    push rbp
+    mov rbp, rsp
+
+    push rdi
+
+    ; Compute row
+    mov rsi, 7
+    mov rdx, 127
+    mov cl, 'B'
+    call getPos
+
+    pop rdi
+
+    ; Save result
+    push rax
+
+    ; Compute col
+    add rdi, 7
+    mov rsi, 3
+    mov rdx, 7
+    mov cl, 'R'
+    call getPos
+
+    ; Return row * 8 + col == row << 3 + col
+    ; rdx = row
+    pop rdx
+    shl rdx, 3
+    add rax, rdx
+
+    leave
+    ret
