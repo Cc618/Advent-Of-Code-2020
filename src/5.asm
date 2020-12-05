@@ -1,5 +1,12 @@
 ; See 5.c for prototypes
 
+extern fgets
+extern feof
+extern puts
+extern printf
+
+section .text
+
 ; rdi : val
 ; rsi : len
 ; rdx : high
@@ -93,6 +100,63 @@ getId:
     pop rdx
     shl rdx, 3
     add rax, rdx
+
+    leave
+    ret
+
+
+; stdin : rdi, r14
+; mx : r12
+; buf : r13 = rbp - 16
+global part1
+part1:
+    push rbp
+    mov rbp, rsp
+    sub rsp, 16
+
+    mov rax, rbp
+    sub rax, 16
+
+    push r12
+    push r13
+    push r14
+
+    mov r13, rax
+    mov r14, rdi
+
+    xor r12, r12
+.loop:
+    ; Get line within buffer
+    mov rdi, r13
+    mov rsi, 16
+    mov rdx, r14
+    call fgets
+
+    ; Check eof
+    mov rdi, r14
+    call feof
+
+    cmp rax, 0
+    jne .done
+
+    ; Get id
+    mov rdi, r13
+    call getId
+
+    ; Update max
+    cmp rax, r12
+    jle .loop
+
+    mov r12, rax
+    jmp .loop
+
+.done:
+    ; Return max
+    mov rax, r12
+
+    pop r14
+    pop r13
+    pop r12
 
     leave
     ret

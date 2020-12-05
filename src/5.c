@@ -16,7 +16,7 @@ extern int getPos(const char *val, int len, int high, char upper);
 //     return low;
 // }
 
-int getId(const char *val);
+extern int getId(const char *val);
 
 // int getId(const char *val) {
 //     int row = getPos(val, 7, 127, 'B');
@@ -25,22 +25,30 @@ int getId(const char *val);
 //     return row * 8 + col;
 // }
 
+extern int part1(FILE *fin);
+
+// int cpart1(FILE *fin) {
+//     int mx = 0;
+
+//     char buf[16];
+//     do {
+//         fgets(buf, 16, fin);
+
+//         if (feof(fin))
+//             break;
+
+//         int id = getId(buf);
+
+//         mx = id > mx ? id : mx;
+//     } while (1);
+
+//     return mx;
+// }
+
 int main() {
-    int mx = 0;
+    int result1 = part1(stdin);
 
-    char buf[16];
-    do {
-        fgets(buf, 16, stdin);
-
-        if (feof(stdin))
-            break;
-
-        int id = getId(buf);
-
-        mx = id > mx ? id : mx;
-    } while (1);
-
-    printf("Part 1 : %d\n", mx);
+    printf("Part 1 : %d\n", result1);
 
     return 0;
 }
