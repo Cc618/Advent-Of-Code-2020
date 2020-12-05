@@ -19,7 +19,7 @@ Some problems have multiple implementations, the best time complexity is display
 | [02](src/2.jl)    | O(N)      | Julia |
 | [03](src/3.dart)  | O(N)      | Dart |
 | [04](src/4.c)     | O(N)      | C |
-| [05](src/5.asm)   | O(N)      | [NASM](src/5.asm) / [C](src/5.c) |
+| [05](src/5.c)     | O(N)      | [NASM](src/5.asm) / [C](src/5.c) |
 
 ## How to run ?
 The input is always passed via stdin by piping.
