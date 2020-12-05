@@ -1,5 +1,9 @@
+// Compile with :
+// nasm -o asm.o -f elf64 5.asm && gcc -static -o program 5.c asm.o
+
 #include <stdio.h>
 #include <stddef.h>
+#include <stdlib.h>
 
 extern int getPos(const char *val, int len, int high, char upper);
 
@@ -45,10 +49,44 @@ extern int part1(FILE *fin);
 //     return mx;
 // }
 
-int main() {
-    int result1 = part1(stdin);
+int intcmp(const void *a, const void *b) {
+    return *(const int*)a > *(const int*)b;
+}
 
-    printf("Part 1 : %d\n", result1);
+#define NIDS 761
+int part2(FILE *fin) {
+    char buf[16];
+    int *ids = malloc(4 * NIDS);
+    int idsptr = 0;
+    do {
+        fgets(buf, 16, fin);
+
+        if (feof(fin))
+            break;
+
+        int id = getId(buf);
+        ids[idsptr++] = id;
+    } while (1);
+
+    // Sort ids
+    qsort(ids, NIDS, 4, intcmp);
+
+    for (int i = 0; i < NIDS - 1; ++i)
+        if (ids[i + 1] - ids[i] != 1)
+            return ids[i] + 1;
+
+    free(ids);
+
+    // Error
+    return -1;
+}
+
+int main() {
+    // int result1 = part1(stdin);
+    int result2 = part2(stdin);
+
+    // printf("Part 1 : %d\n", result1);
+    printf("Part 2 : %d\n", result2);
 
     return 0;
 }
