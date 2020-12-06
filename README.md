@@ -21,7 +21,7 @@ Some problems have multiple implementations, the best time complexity is display
 | [03](src/3.dart)   | O(N)       | Dart |
 | [04](src/4.c)      | O(N)       | C |
 | [05](src/5.c)      | O(N)       | [NASM](src/5.asm) / [C](src/5.c) |
-| [06](src/6.python) | O(N log N) | Python |
+| [06](src/6.python) | O(N)       | Python |
 
 ## How to run ?
 The input is always passed via stdin by piping.
