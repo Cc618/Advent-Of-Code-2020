@@ -33,6 +33,7 @@ For instance, compiled languages like C++ first compile the code :
 ```sh
 g++ -o program 1.cpp
 ```
+Note that some files contain specific instructions to compile (to build C with NASM for instance).
 
 And then execute it :
 
