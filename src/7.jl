@@ -21,10 +21,35 @@ for (i, r) in enumerate(raw)
         last = findlast(' ', rule)
 
         count, color = parse(Int, strip(rule[1:first - 1])), strip(rule[first + 1:last - 1])
-        raw[i][2] = [count, color]
+        raw[i][2][j] = [count, color]
     end
 end
 
-for r in raw[1:10]
-    println(r)
+# Every color containing a shiny gold
+shiny = Set(["shiny gold"])
+lastcount = nothing
+while lastcount != length(shiny)
+    global lastcount = length(shiny)
+
+    for (left, right) in raw
+        # println("> $right")
+
+        # If an item in right contains a shiny gold bag, left
+        # contains a shiny gold bag
+        any((x) -> x[2] ∈ shiny, right) && (push!(shiny, left))
+    end
+
+    # println(shiny)
 end
+
+# Without shiny gold
+println(length(shiny) - 1)
+
+# for r in raw[1:10]
+#     println(r)
+# end
+
+
+# While count changes
+#   Add every left items having a right item within the shiny gold set
+#   Update count
