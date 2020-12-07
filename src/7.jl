@@ -32,24 +32,35 @@ while lastcount != length(shiny)
     global lastcount = length(shiny)
 
     for (left, right) in raw
-        # println("> $right")
-
         # If an item in right contains a shiny gold bag, left
         # contains a shiny gold bag
         any((x) -> x[2] ∈ shiny, right) && (push!(shiny, left))
     end
-
-    # println(shiny)
 end
 
 # Without shiny gold
-println(length(shiny) - 1)
+println("Part 1 : $(length(shiny) - 1)")
 
-# for r in raw[1:10]
-#     println(r)
-# end
+name2prod = Dict(left => right for (left, right) in raw)
+name2count = Dict()
 
+# DP approach (memoization)
+function count(color)
+    global name2count
 
-# While count changes
-#   Add every left items having a right item within the shiny gold set
-#   Update count
+    if haskey(name2count, color)
+        return name2count[color]
+    end
+
+    c = 1
+    # For each right item
+    for (number, name) in name2prod[color]
+        c += number * count(name)
+    end
+
+    name2count[color] = c
+
+    return c
+end
+
+println("Part 2 : $(count("shiny gold") - 1)")
