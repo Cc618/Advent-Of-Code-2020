@@ -10,6 +10,7 @@ Mutiple languages have been used :
 - Julia
 - NASM
 - Python
+- Javascript
 
 ## Problems
 Some problems have multiple implementations, the best time complexity is displayed in this array :
@@ -45,3 +46,14 @@ Interpreted / JIT compiled languages such as Julia need only one command :
 ```sh
 cat 1.input | julia 1.jl
 ```
+
+## Notes
+### Javascript
+Javascript is executed via NodeJS.
+
+### Python
+Python version is 3.9+.
+
+### NASM
+NASM files target x86\_64 linux machines.
+
