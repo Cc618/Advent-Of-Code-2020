@@ -24,6 +24,7 @@ Some problems have multiple implementations, the best time complexity is display
 | [05](src/5.c)      | O(N)       | [NASM](src/5.asm) / [C](src/5.c) |
 | [06](src/6.py)     | O(N)       | Python |
 | [07](src/7.jl)     | O(N log N) | Julia |
+| [08](src/8.js)     | O(N^2)     | Javascript |
 
 ## How to run ?
 The input is always passed via stdin by piping.
