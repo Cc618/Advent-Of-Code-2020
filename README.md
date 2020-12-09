@@ -6,11 +6,12 @@ Mutiple languages have been used :
 
 - C
 - C++
+- C#
 - Dart
+- Javascript
 - Julia
 - NASM
 - Python
-- Javascript
 
 ## Problems
 Some problems have multiple implementations, the best time complexity is displayed in this array :
@@ -24,7 +25,8 @@ Some problems have multiple implementations, the best time complexity is display
 | [05](src/5.c)      | O(N)       | [NASM](src/5.asm) / [C](src/5.c) |
 | [06](src/6.py)     | O(N)       | Python |
 | [07](src/7.jl)     | O(N log N) | Julia |
-| [08](src/8.js)     | O(N ^ 2)     | Javascript |
+| [08](src/8.js)     | O(N ^ 2)   | Javascript |
+| [09](src/9.cs)     | O(N)       | C# |
 
 ## How to run ?
 The input is always passed via stdin by piping.
@@ -51,12 +53,17 @@ cat 1.input | julia 1.jl
 ```
 
 ## Notes
+All problems have been made on x86\_64 Arch Linux.
+
+### C#
+Compiled with Mono on Linux.
+
 ### Javascript
 Javascript is executed via NodeJS.
 
-### Python
-Python version is 3.9+.
-
 ### NASM
 NASM files target x86\_64 linux machines.
+
+### Python
+Python version is 3.9+.
 
