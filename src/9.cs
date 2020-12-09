@@ -13,6 +13,7 @@ public class Problem
         for (int i = 0; i < lines.Length; ++i)
             data[i] = long.Parse(lines[i]);
 
+        long target = 0;
         for (int i = preambleSize; i < data.Length; ++i) {
             bool ok = false;
 
@@ -25,8 +26,34 @@ public class Problem
                     }
 
             if (!ok) {
-                Console.WriteLine($"Part 1 : {data[i]}");
+                target = data[i];
+                Console.WriteLine($"Part 1 : {target}");
                 break;
+            }
+        }
+
+        // Two pointers method : O(N)
+        int end = 0;
+        int start = 0;
+        long sum = 0;
+        while (end <= data.Length) {
+            if (sum == target) {
+                long min = data[start];
+                long max = data[start];
+                for (int i = start + 1; i < end; ++i) {
+                    if (data[i] < min)
+                        min = data[i];
+                    if (data[i] > max)
+                        max = data[i];
+                }
+                Console.Write($"Part 2 : {min + max}");
+                break;
+            } else if (sum < target) {
+                sum += data[end];
+                ++end;
+            } else {
+                sum -= data[start];
+                ++start;
             }
         }
     }
