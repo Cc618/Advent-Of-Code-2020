@@ -3,7 +3,7 @@ import sys
 # Part 2 only, see 10.go for part 1
 data = list(map(int, sys.stdin.read().splitlines()))
 
-device = data[-1] + 3
+device = max(data) + 3
 
 # dp[i] = #arrangements from 0 to i
 dp = [0] * (1 + device)
