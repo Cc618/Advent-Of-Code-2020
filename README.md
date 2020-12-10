@@ -8,13 +8,14 @@ Mutiple languages have been used :
 - C++
 - C#
 - Dart
+- Go
 - Javascript
 - Julia
 - NASM
 - Python
 
 ## Problems
-Some problems have multiple implementations, the best time complexity is displayed in this array :
+Some problems have multiple implementations, the time complexity for part 2 is displayed in this array :
 
 | Day | Time Complexity      | Language |
 | --- | -------------------- | -------- |
@@ -27,6 +28,7 @@ Some problems have multiple implementations, the best time complexity is display
 | [07](src/7.jl)     | O(N log N) | Julia |
 | [08](src/8.js)     | O(N ^ 2)   | Javascript |
 | [09](src/9.cs)     | O(N)       | C# |
+| [10](src/10.go)    | O(N)       | [Go](src/10.go) / [Python](src/10.py) |
 
 ## How to run ?
 The input is always passed via stdin by piping.
