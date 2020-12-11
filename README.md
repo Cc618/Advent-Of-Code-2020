@@ -9,6 +9,7 @@ Mutiple languages have been used :
 - C#
 - Dart
 - Go
+- Java
 - Javascript
 - Julia
 - NASM
@@ -29,6 +30,7 @@ Some problems have multiple implementations, the time complexity for part 2 is d
 | [08](src/8.js)     | O(N ^ 2)   | Javascript |
 | [09](src/9.cs)     | O(N)       | C# |
 | [10](src/10.go)    | O(N)       | [Go](src/10.go) / [Python](src/10.py) |
+| [11](src/11.java)  | O(N ^ 2)   | Java |
 
 ## How to run ?
 The input is always passed via stdin by piping.
