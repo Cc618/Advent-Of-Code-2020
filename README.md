@@ -32,6 +32,8 @@ Some problems have multiple implementations, the time complexity for part 2 is d
 | [10](src/10.go)    | O(N)       | [Go](src/10.go) / [Python](src/10.py) |
 | [11](src/11.java)  | O(N ^ 2)   | Java |
 | [12](src/12.jl)    | O(N)       | Julia |
+| [13](src/13.cpp)   | O(N)       | C++ (WIP) |
+| [14](src/14.py)    | O(N)       | Python (WIP) |
 
 ## How to run ?
 The input is always passed via stdin by piping.
