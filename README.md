@@ -33,7 +33,7 @@ Some problems have multiple implementations, the time complexity for part 2 is d
 | [11](src/11.java)  | O(N ^ 2)   | Java |
 | [12](src/12.jl)    | O(N)       | Julia |
 | [13](src/13.cpp)   | O(N)       | C++ (WIP) |
-| [14](src/14.py)    | O(N)       | Python (WIP) |
+| [14](src/14.py)    | O(N)       | Python |
 
 ## How to run ?
 The input is always passed via stdin by piping.
