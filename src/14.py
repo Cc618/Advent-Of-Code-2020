@@ -1,9 +1,40 @@
-from itertools import *
 import sys
 
 mem = {}
 
 lines = sys.stdin.readlines()
+
+# for i in range(len(lines)):
+#     line = lines[i]
+
+#     # Mask instruction
+#     if line.split(' ')[0] == 'mask':
+#         mask = line.split(' ')[-1].strip()
+#         andmask = int(mask.replace('X', '1'), 2)
+#         ormask = int(mask.replace('X', '0'), 2)
+#     else:
+#         # Mem instruction
+#         addr = int(line[4 : line.index(']')])
+
+#         val = int(line.split(' ')[-1])
+#         val &= andmask
+#         val |= ormask
+
+#         mem[addr] = val
+
+# print('Part 1 :', sum((v for (k, v) in mem.items())))
+
+
+# Set all values of the masked memory to val
+def setmem(mem, addr, val, xi):
+    # For each combination
+    for i in range(2 ** len(xi)):
+        for j in range(len(xi)):
+            addr[len(addr) - 1 - xi[j]] = '1' if i & (2 ** j) else '0'
+
+        newaddr = int(''.join(addr), 2)
+        mem[newaddr] = val
+
 
 for i in range(len(lines)):
     line = lines[i]
@@ -11,45 +42,22 @@ for i in range(len(lines)):
     # Mask instruction
     if line.split(' ')[0] == 'mask':
         mask = line.split(' ')[-1].strip()
-        andmask = int(mask.replace('X', '1'), 2)
         ormask = int(mask.replace('X', '0'), 2)
     else:
         # Mem instruction
         addr = int(line[4 : line.index(']')])
-
         val = int(line.split(' ')[-1])
-        val &= andmask
-        val |= ormask
 
-        mem[addr] = val
+        # Construct addr with Xs
+        oraddr = addr | ormask
 
-print('Part 1 :', sum((v for (k, v) in mem.items())))
+        binaddr = bin(oraddr)[2:]
+        if len(binaddr) < len(mask):
+            binaddr = '0' * (len(mask) - len(binaddr)) + binaddr
 
-# def allsum(s):
-#     xi = [i for (i, c) in enumerate(s) if c == 'X']
-#     for i in range(2 ** len(xi)):
-#         # for j in range()
-#         s[xi[i]]
+        addr = [c for c in binaddr]
+        xi = [len(mask) - i - 1 for (i, c) in enumerate(mask) if c == 'X']
 
-#     # for i in range(len(s)):
-#     #     if s[i] == 'X':
+        setmem(mem, addr, val, xi)
 
-
-
-
-#     # cnt = 0
-#     # nx = s.count('X')
-#     # for i in range(len(s)):
-#     #     if s[len(s) - i - 1] == '1':
-#     #         # print(2 ** i, 2 ** nx)
-#     #         cnt += 2 ** (i + nx)
-#     #     elif s[len(s) - i - 1] == 'X':
-#     #         # print(2 ** i, 2 ** (nx - 1))
-#     #         cnt += 2 ** (i - 1 + nx)
-
-#     # return cnt
-
-# # allsum('X1101X') = 170
-# # allsum('X1101X')
-# print(allsum('1X0XX'), allsum('X1101X'), allsum('1X0XX') + allsum('X1101X'))
-
+print('Part 2 :', sum((v for (k, v) in mem.items())))
