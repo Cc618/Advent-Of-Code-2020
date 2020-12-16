@@ -35,6 +35,7 @@ Some problems have multiple implementations, the time complexity for part 2 is d
 | [13](src/13.cpp)   | O(N)       | C++ (WIP) |
 | [14](src/14.py)    | O(N)       | Python |
 | [15](src/15.cpp)   | O(1)       | C++ |
+| [16](src/16.jl)    | O(N ^ 2)   | Julia |
 
 ## How to run ?
 The input is always passed via stdin by piping.
