@@ -16,7 +16,8 @@ Mutiple languages have been used :
 - Python
 
 ## Problems
-Some problems have multiple implementations, the time complexity for part 2 is displayed in this array :
+Some problems have multiple implementations.
+The time complexity for part 2 is displayed (N = length of the input).
 
 | Day | Time Complexity      | Language |
 | --- | -------------------- | -------- |
@@ -36,6 +37,7 @@ Some problems have multiple implementations, the time complexity for part 2 is d
 | [14](src/14.py)    | O(N)       | Python |
 | [15](src/15.cpp)   | O(1)       | C++ |
 | [16](src/16.jl)    | O(N ^ 2)   | Julia |
+| [17](src/17.cpp)   | O(N ^ 2)   | C++ |
 
 ## How to run ?
 The input is always passed via stdin by piping.
