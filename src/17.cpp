@@ -55,7 +55,6 @@ int main() {
         for (int w = 0; w < 1 + 2 * DEPTH; ++w)
 #endif
         for (int z = 0; z < 1 + 2 * DEPTH; ++z) {
-            // cout << x << y << z << endl;
             size_t neighbors = 0;
 
             for (int dx = -1; dx < 2; ++dx)
