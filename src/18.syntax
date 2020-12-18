@@ -1,0 +1,28 @@
+@lexer:
+        BLANK -> "[\s]" : nothing
+        ADD -> "+" : (data) -> nothing
+        SUB -> "-" : (data) -> nothing
+        MUL -> "[\*]" : (data) -> nothing
+        DIV -> "/" : (data) -> nothing
+        LP -> "(" : (data) -> nothing
+        RP -> ")" : (data) -> nothing
+        LF -> "[\n]" : (data) -> nothing
+        N -> "-?[num][num]*" : (data) -> Base.parse(BigInt, data)
+
+@parser:
+    root -> val : (val) -> val
+
+    val -> n3 LF : (val, _) -> val
+    val -> val n3 LF : (val, expr, _) -> val + expr
+
+    # - Only part 2 -
+    n3 -> n3 MUL n2 : (a, _, b) -> a * b
+    # ---
+    n3 -> n2 : (val) -> val
+
+    n2 -> n2 ADD n1 : (a, _, b) -> a + b
+    # Part 1 : n2 -> n2 MUL n1 : (a, _, b) -> a * b
+    n2 -> n1 : (val) -> val
+
+    n1 -> N : (val) -> val
+    n1 -> LP n3 RP : (_, val, _) -> val
