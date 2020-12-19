@@ -39,6 +39,7 @@ The time complexity for part 2 is displayed (N = length of the input).
 | [16](src/16.jl)    | O(N ^ 2)   | Julia |
 | [17](src/17.cpp)   | O(N ^ 2)   | C++ |
 | [18](src/18.jl)    | O(N)       | Julia |
+| [19](src/19.py)    | O(N)       | Python |
 
 ## How to run ?
 The input is always passed via stdin by piping.
