@@ -3,3 +3,5 @@ a
 *.input
 *.o
 *.yy*
+parser19.py
+__pycache__
