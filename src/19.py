@@ -1,3 +1,6 @@
+# Generates an LL(1) parser in python
+# Pretty simple since there are no epsilons
+
 import sys
 
 rules, data = sys.stdin.read().split('\n\n')
